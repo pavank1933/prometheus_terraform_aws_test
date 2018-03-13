@@ -75,7 +75,6 @@ resource "aws_instance" "phpapp1" {
   tags {
         Name = "phpapp1"
   }
-  user_data              = "${file("install_node_exporter.sh")}"
 }
 
 resource "aws_instance" "phpapp2" {
@@ -88,7 +87,6 @@ resource "aws_instance" "phpapp2" {
   tags {
         Name = "phpapp2"
   }
-  user_data              = "${file("install_node_exporter.sh")}"
 }
 
 resource "aws_instance" "phpapp3" {
@@ -101,7 +99,6 @@ resource "aws_instance" "phpapp3" {
   tags {
         Name = "phpapp3"
   }
-  user_data              = "${file("install_node_exporter.sh")}"
 }
 
 
@@ -151,15 +148,5 @@ resource "aws_instance" "prometheus_server" {
   key_name = "${var.key_name}"
   tags {
         Name = "prometheus_server"
-  }  
-  user_data = <<HEREDOC
-  #!/bin/bash   
-  wget https://github.com/prometheus/prometheus/releases/download/v2.2.0/prometheus-2.2.0.linux-amd64.tar.gz
-  tar xvfz prometheus-*.tar.gz
-  cd prometheus-*
-  cp -rpf prometheus.yml  prometheus.yml-orig  
-  echo "      - targets: ['"${aws_instance.phpapp1.public_ip}":9100', '"${aws_instance.phpapp2.public_ip}":9100', '"${aws_instance.phpapp3.public_ip}":9100']" >> prometheus.yml  
-  sed -i '29d' prometheus.yml
-  ./prometheus --config.file=prometheus.yml
-HEREDOC
+  } 
 }
