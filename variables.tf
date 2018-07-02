@@ -1,5 +1,5 @@
 variable "region" {
-  default = "us-east-1"
+  default = "us-east-2"
 }
 variable "AmiLinux" {
   type = "map"
@@ -7,7 +7,7 @@ variable "AmiLinux" {
     us-east-1 = "ami-97785bed" # Virginia
     us-west-2 = "ami-5ec1673e" # Oregon
     eu-west-1 = "ami-9398d3e0" # Ireland
-    us-east-2 = "ami-ea87a78f" # Ohio
+    us-east-2 = "ami-8c122be9" # Ohio
   }
   description = "Change the AMI's. I add only 3 regions (Virginia, Oregon, Ireland) to show the map feature but you can add all the regions that you need"
 }
@@ -17,24 +17,24 @@ variable "Ubuntu" {
     us-east-1 = "ami-66506c1c" # Virginia
     us-west-2 = "ami-5ec1673e" # Oregon
     eu-west-1 = "ami-9398d3e0" # Ireland
-    us-east-2 = "ami-ea87a78f" # Ohio
+    us-east-2 = "ami-6a003c0f" # Ohio
   }
   description = "Change the AMI's. I add only 3 regions (Virginia, Oregon, Ireland) to show the map feature but you can add all the regions that you need"
 }
 variable "vpc-fullcidr" {
-    default = "172.28.0.0/16"
+    default = "172.31.0.0/16"
   description = "the vpc cdir"
 }
 variable "Subnet-Public-AzA-CIDR" {
-  default = "172.28.0.0/24"
+  default = "172.31.0.0/20"
   description = "the cidr of the subnet"
 }
 variable "Subnet-Private-AzA-CIDR" {
-  default = "172.28.3.0/24"
+  default = "172.31.16.0/20"
   description = "the cidr of the subnet"
 }
 variable "key_name" {
-  default = "IOT-Pavan-Keypair"
+  default = "elkprometheuskey"
   description = "the ssh key to use in the EC2 machines"
 }
 variable "DnsZoneName" {
