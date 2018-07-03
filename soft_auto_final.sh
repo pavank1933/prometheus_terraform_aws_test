@@ -1,6 +1,6 @@
 #!/bin/bash
 #Install Ansible
-sudo su
+#sudo su
 apt-get update -y
 apt-get install ansible -y
 mkdir -p playbooks
