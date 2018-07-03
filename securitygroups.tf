@@ -43,6 +43,36 @@ resource "aws_security_group" "FrontEnd" {
         cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
+        from_port = 5000
+        to_port = 5000
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+        from_port = 42185
+        to_port = 42185
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+        from_port = 9919
+        to_port = 9919
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+        from_port = 24230
+        to_port = 24230
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+        from_port = 9200
+        to_port = 9200
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
     from_port   = "22"
     to_port     = "22"
     protocol    = "TCP"
