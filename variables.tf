@@ -11,6 +11,13 @@ variable "AmiLinux" {
   }
   description = "Change the AMI's. I add only 3 regions (Virginia, Oregon, Ireland) to show the map feature but you can add all the regions that you need"
 }
+variable "Rhel" {
+  type = "map"
+  default = {
+    us-east-2 = "ami-03291866" # Ohio
+  }
+  description = "Change the AMI's. I add only 3 regions (Virginia, Oregon, Ireland) to show the map feature but you can add all the regions that you need"
+}
 variable "Ubuntu" {
   type = "map"
   default = {

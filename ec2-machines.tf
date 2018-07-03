@@ -150,3 +150,27 @@ resource "aws_instance" "prometheus_server" {
         Name = "prometheus_server"
   } 
 }
+
+resource "aws_instance" "elk_server" {
+  ami           = "${lookup(var.Rhel, var.region)}"
+  instance_type = "t2.medium"
+  associate_public_ip_address = "true"
+  subnet_id = "${aws_subnet.PublicAZA.id}"
+  vpc_security_group_ids = ["${aws_security_group.FrontEnd.id}"]
+  key_name = "${var.key_name}"
+  tags {
+        Name = "elk_server"
+  } 
+}
+
+resource "aws_instance" "elk_client" {
+  ami           = "${lookup(var.Rhel, var.region)}"
+  instance_type = "t2.medium"
+  associate_public_ip_address = "true"
+  subnet_id = "${aws_subnet.PublicAZA.id}"
+  vpc_security_group_ids = ["${aws_security_group.FrontEnd.id}"]
+  key_name = "${var.key_name}"
+  tags {
+        Name = "elk_client"
+  } 
+}
