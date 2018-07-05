@@ -1,8 +1,10 @@
 #!/bin/bash
 #Install Ansible
-#sudo su
-apt-get update -y
-apt-get install ansible -y
+sudo apt-get update -y
+sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update -y
+sudo apt-get install ansible -y
 mkdir -p playbooks
 cd playbooks
 #Install Terraform
